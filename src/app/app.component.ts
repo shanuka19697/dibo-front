@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dibo';
+  closeNavbar() {
+    const navbar = document.querySelector('.navbar-collapse');
+    if (navbar) {
+      navbar.classList.remove('show'); // Close menu
+    }
+  }
 }

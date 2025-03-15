@@ -1,0 +1,226 @@
+/* Add Data Page Container */
+.add-data-page {
+    padding: 6rem 2rem 2rem; /* Space for fixed navbar */
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    position: relative; /* For overlay positioning */
+    overflow: hidden; /* Prevent background overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Image with Blur and Gradient Overlay */
+.add-data-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://picsum.photos/1920/1080?random=1') no-repeat center center/cover;
+    filter: blur(15px); /* Increased blur for a softer effect */
+    z-index: -1; /* Place behind content */
+}
+
+.add-data-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(121, 23, 23, 0.5), rgba(255, 208, 0, 0.3)); /* Gradient overlay with brown and yellow */
+    z-index: -1; /* Place behind content */
+}
+
+/* Add Data Section (Form Container) with Glassmorphism */
+.add-data-section {
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    border-radius: 16px; /* Softer corners */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    backdrop-filter: blur(10px); /* Glass blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for glass effect */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+.add-data-section:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Animation for Form Section */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Title */
+.form-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #3a0202; /* White text for contrast */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem; /* Increased spacing between fields */
+}
+
+/* Form Label */
+.form-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000000; /* Light gray for contrast */
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.form-label:hover {
+    color: #ffd000; /* Yellow on hover for interactivity */
+}
+
+/* Form Input */
+.form-control {
+    background: rgba(255, 255, 255, 0.95); /* Slightly opaque white background */
+    border: 2px solid #310101; /* White border for contrast */
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333; /* Dark text for readability */
+    padding: 10px 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #791717; /* Brown border on focus */
+    box-shadow: 0 0 8px rgba(121, 23, 23, 0.3); /* Enhanced shadow on focus */
+    transform: scale(1.01); /* Slight scale effect on focus */
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px; /* Increased padding for better touch target */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Secondary Button (Cancel) */
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #5a6268); /* Gray gradient */
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268, #6c757d); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Primary Button (Update) */
+.btn-primary {
+    background: linear-gradient(135deg, #791717, #5a2e2e); /* Brown gradient */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a2e2e, #791717); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.btn-primary:disabled {
+    background: linear-gradient(135deg, #a9a9a9, #8c8c8c); /* Gray gradient when disabled */
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Spinner Icon */
+.fa-spinner {
+    margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .add-data-page {
+        padding: 5rem 1rem 1rem;
+    }
+
+    .add-data-section {
+        margin: 3rem 1rem; /* Reduced margin */
+        padding: 2rem; /* Reduced padding */
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .form-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .add-data-page {
+        padding: 4rem 0.5rem 0.5rem;
+    }
+
+    .add-data-section {
+        margin: 2rem 0.5rem;
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .col-12.text-end.mt-5 {
+        margin-top: 2rem !important; /* Reduced margin */
+    }
+}

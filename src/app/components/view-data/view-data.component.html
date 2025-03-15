@@ -1,0 +1,26 @@
+<div class="view-data-page">
+    <!-- Heading -->
+    <h1 class="view-data-heading">Student Data</h1>
+
+    <!-- Student Data Cards -->
+    <div class="student-cards">
+        <div class="student-card">
+            <div class="card-content">
+                <h3 class="card-title">{{ sdata.StudentName }}</h3>
+                <div class="card-meta">
+                    <p><i>🆔 ID: </i>{{ sdata._id }}</p>
+                    <p><i>📅 Date:</i> {{ sdata.Date | date:'mediumDate' }}</p>
+                    <p><i>📖 Class:</i> {{ sdata.Class }}</p>
+                    <p><i>🔢 Index Number:</i> {{ sdata.sIndexNum }}</p>
+                    <p><i>📝 Reason:</i> {{ sdata.Reason }}</p>
+                    <p><i>👨‍🏫 Teacher ID:</i> {{ sdata.TeacherID }}</p>
+                    <p><i>📜 Agreement:</i> {{ sdata.Agreement }}</p>
+                    <p><i>⏰ Agreement End Date:</i> {{ sdata.AgreementEndDate | date:'mediumDate' }}</p>
+                    <p><i>👀 Observer Teacher ID:</i> {{ sdata.ObserverTeacherID }}</p>
+                    <p><i>✅</i> Active: <span *ngIf="sdata.Isactive" class="badge text-bg-success">Completed</span><span *ngIf="!sdata.Isactive" class="badge text-bg-danger">Uncompleted</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

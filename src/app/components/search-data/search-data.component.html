@@ -1,0 +1,31 @@
+<div class="search-page">
+    <!-- Heading -->
+    <h1 class="search-heading">Search Your Data</h1>
+
+    <!-- Centered Search Bar and Button -->
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchIndex" placeholder="Enter Index Number" class="search-input">
+        <button class="btn btn-primary" (click)="searchData()">Search</button>
+    </div>
+
+    <!-- Student Data Cards (Displayed after search) -->
+    <div class="student-cards" *ngIf="filteredData.length > 0">
+        <div class="student-card" *ngFor="let student of filteredData">
+            <div class="card-content">
+                <h3 class="card-title">{{ student.StudentName }}</h3>
+                <div class="card-meta">
+                    <p><i>📖</i> Class: {{ student.Class }}</p>
+                    <p><i>🔢</i> Index Number: {{ student.sIndexNum }}</p>
+                    <p><i>📅</i> Agreement End Date: {{ student.AgreementEndDate | date:'mediumDate' }}</p>
+                    <p><i>📝</i> Reason: {{ student.Reason }}</p>
+                    <p><i>✅</i> Active: <span *ngIf="student.Isactive" class="badge text-bg-success">Completed</span><span *ngIf="!student.Isactive" class="badge text-bg-danger">Uncompleted</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message if no data is found (only after submission) -->
+    <div class="no-data" *ngIf="searchSubmitted && filteredData.length === 0">
+        <p>No student data found for Index Number {{ searchIndex }}.</p>
+    </div>
+</div>

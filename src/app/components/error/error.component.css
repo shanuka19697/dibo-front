@@ -1,0 +1,78 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.container {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s; /* Fade-in animation */
+}
+.error-title {
+    font-size: 100px;
+    font-weight: bold;
+    color: #f8e10c;
+    margin-bottom: 20px;
+    animation: slideUp 1s ease-out forwards 1s; /* Slide-up animation */
+}
+.error-message {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #333;
+    animation: slideUp 1s ease-out forwards 1.5s; /* Slide-up animation */
+}
+.btn-custom {
+    background: #ffbb00;
+    color: white;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+    animation: slideUp 1s ease-out forwards 2s; /* Slide-up animation */
+}
+.btn-custom:hover {
+    background: #aa8c04;
+}
+/* Animated Icon */
+.error-icon {
+    font-size: 80px;
+    margin-top: 100px;
+    color: #dc3545; /* Red color for broken link */
+    animation: bounce 1s infinite;
+}
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* Slide-up Animation */
+@keyframes slideUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

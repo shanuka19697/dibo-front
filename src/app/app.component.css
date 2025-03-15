@@ -1,0 +1,162 @@
+/* Navbar Styling */
+.nav-custom {
+  background: #ffd000; /* Yellow background */
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */ /* Fixed position */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex; /* Ensure flex layout for navbar */
+  justify-content: space-between; /* Space between brand and links */
+  align-items: center; /* Vertically center items */
+}
+
+/* Container Fluid */
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between logo and text */
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Circular logo */
+  object-fit: cover;
+}
+
+.main-text {
+  color: #791717; /* Brown color */
+  font-weight: 700;
+  font-size: 1.75rem; /* Slightly smaller for balance */
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.main-text:hover {
+  color: #5a2e2e; /* Slightly darker brown on hover */
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  color: #791717;
+  display: none; /* Hidden by default on large screens */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23791717' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Navbar Collapse (Links Container) */
+.navbar-collapse {
+  display: flex; /* Ensure links are visible on large screens */
+  justify-content: flex-end; /* Align links to the right */
+}
+
+/* Navbar Links */
+.navbar-nav {
+  display: flex;
+  flex-direction: row; /* Horizontal layout on large screens */
+  justify-content: flex-end; /* Align to the right */
+  gap: 0.5rem; /* Space between links */
+  margin: 0; /* Remove default margin */
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  color: #791717;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: #791717;
+  color: #fff;
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .navbar-toggler {
+      display: block; /* Show toggler on small screens */
+  }
+
+  .navbar-collapse {
+      display: none; /* Hide links by default on small screens */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #ffd000; /* Match navbar background */
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-collapse.show {
+      display: flex; /* Show links when toggled */
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .navbar-nav {
+      justify-content: center; /* Center links on mobile */
+      flex-direction: column;
+      padding: 0;
+      width: 100%;
+  }
+
+  .nav-link {
+      font-size: 1.2rem;
+      padding: 0.75rem;
+      text-align: center;
+      width: 100%;
+  }
+
+  .main-text {
+      font-size: 1.5rem;
+  }
+
+  .navbar-logo {
+      width: 35px;
+      height: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-custom {
+      padding: 0.5rem 1rem;
+  }
+
+  .main-text {
+      font-size: 1.25rem;
+  }
+
+  .navbar-logo {
+      width: 30px;
+      height: 30px;
+  }
+
+  .nav-link {
+      font-size: 1rem;
+      padding: 0.5rem;
+  }
+}

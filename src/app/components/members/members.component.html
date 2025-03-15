@@ -1,0 +1,23 @@
+<div class="member-list-page">
+    <!-- Heading -->
+    <h1 class="member-list-heading">Member List</h1>
+
+    <!-- Member Data Cards -->
+    <div class="member-cards" *ngIf="members && members.length > 0">
+        <div class="member-card" *ngFor="let member of members">
+            <div class="card-content">
+                <h3 class="card-title">{{ member.Name }}</h3>
+                <div class="card-meta">
+                    <p><i>🎓</i> Role: {{ member.Role }}</p>
+                    <p><i>📞</i> Phone: {{ member.PhoneNumber }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fallback Message -->
+    <div class="no-data" *ngIf="!members || members.length === 0">
+        <p>No members available. Please check back later.</p>
+        <button class="btn btn-primary" (click)="goBack()">Back to Admin</button>
+    </div>
+</div>

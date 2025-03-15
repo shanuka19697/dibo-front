@@ -1,0 +1,62 @@
+<!-- edit-data.component.html -->
+<div class="d-flex justify-content-center">
+    <div class="add-data-section m-5 p-5 col-7">
+      <h2 class="text-center form-title">නව දත්ත ඇතුලත් කිරීම</h2>
+      <div class="container">
+        <form [formGroup]="addDataForm" (ngSubmit)="onSubmit()" class="row g-3">
+          <div class="form-group col-md-6">
+            <label class="form-label">දිනය</label>
+            <input type="date" class="form-control" formControlName="Date">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">සිසුවාගේ නම</label>
+            <input type="text" class="form-control" formControlName="StudentName">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">පන්තිය</label>
+            <input type="text" class="form-control" formControlName="Class">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">විභාග අංකය‍</label>
+            <input type="number" class="form-control" formControlName="sIndexNum">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">කාරණාව</label>
+            <input type="text" class="form-control" formControlName="Reason">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">පන්ති භාර ගුරුතුමාගේ ගුරු අංකය</label>
+            <input type="text" class="form-control" formControlName="TeacherID">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">එකග තාවය</label>
+            <input type="text" class="form-control" formControlName="Agreement">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">එකග තාවය අවසන් වන දිනය</label>
+            <input type="date" class="form-control" formControlName="AgreementEndDate">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label class="form-label">නිරීක්ෂකයාලගේ ගුරු අංකය</label>
+            <input type="text" class="form-control" formControlName="ObserverTeacherID">
+          </div>
+  
+          <div class="col-12 text-end mt-5">
+            <button type="button" routerLink="/admin" class="btn btn-secondary me-2">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="addDataForm.invalid || isDataUploading">
+              Update 
+              <i *ngIf="isDataUploading" class="fa fa-spinner fa-pulse fa-fw" style="color: azure;"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
