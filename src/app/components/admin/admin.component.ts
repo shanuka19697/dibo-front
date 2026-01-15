@@ -16,6 +16,8 @@ export class AdminComponent implements OnInit {
   public sdatas: Studata[] = [];
   public filteredData: Studata[] = [];
   public searchIndex: string = '';
+  public activeChange!: boolean;
+  
 
   constructor(
     private authService: AuthService,
@@ -24,6 +26,13 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    const userRole = this.authService.getUserRole();
+    if (userRole === 'teacher') {  
+      this.activeChange = true;
+    } else {
+      this.activeChange = false;
+    }
+    
   }
 
   public selectData(selectedRow: any, sdata: Studata) {
@@ -65,26 +74,31 @@ export class AdminComponent implements OnInit {
   }
 
   toggleActive(stdata: Studata) {
-    if (window.confirm(`Are you sure you want to ${stdata.Isactive ? 'deactivate' : 'activate'} the student with Index Number ${stdata.sIndexNum}?`)) {
-      // Toggle the local Isactive value
-      stdata.Isactive = !stdata.Isactive;
+    const userRole = this.authService.getUserRole();
+    if (userRole === 'principal') {
+      if (window.confirm(`Are you sure you want to ${stdata.Isactive ? 'deactivate' : 'activate'} the student with Index Number ${stdata.sIndexNum}?`)) {
+        // Toggle the local Isactive value
+        stdata.Isactive = !stdata.Isactive;
 
-      // Update the backend via DataService
-      this.isLoading = true;
-      this.dataService.updateSData(stdata._id, { ...stdata, Isactive: stdata.Isactive }).subscribe({
-        next: (response) => {
-          console.log('Student active status updated:', response);
-          this.isLoading = false;
-          // No need to refresh all data since we're updating locally
-        },
-        error: (err) => {
-          console.error('Error updating student active status:', err);
-          // Revert the change if the update fails
-          stdata.Isactive = !stdata.Isactive;
-          this.isLoading = false;
-          alert('Failed to update the student status. Please try again.');
-        }
-      });
+        // Update the backend via DataService
+        this.isLoading = true;
+        this.dataService.updateSData(stdata._id, { ...stdata, Isactive: stdata.Isactive }).subscribe({
+          next: (response) => {
+            console.log('Student active status updated:', response);
+            this.isLoading = false;
+            // No need to refresh all data since we're updating locally
+          },
+          error: (err) => {
+            console.error('Error updating student active status:', err);
+            // Revert the change if the update fails
+            stdata.Isactive = !stdata.Isactive;
+            this.isLoading = false;
+            alert('Failed to update the student status. Please try again.');
+          }
+        });
+      }
+    } else {
+      alert('You do not have permission to perform this action.');
     }
   }
 

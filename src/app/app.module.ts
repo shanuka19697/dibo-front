@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewDataComponent } from './components/view-data/view-data.component';
 import { EditDataComponent } from './components/edit-data/edit-data.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,18 +28,18 @@ import { EditDataComponent } from './components/edit-data/edit-data.component';
     MembersComponent,
     ErrorComponent,
     ViewDataComponent,
-    EditDataComponent
+    EditDataComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormsModule,
+    HttpClientModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

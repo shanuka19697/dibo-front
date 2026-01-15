@@ -12,6 +12,18 @@
     padding: 2rem;
     font-family: 'Poppins', sans-serif;
 }
+.teacher-account{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #0f5bdf; /* Dark gray */
+}
+.principal-account{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff0000; /* Dark gray */
+}
 
 /* Dashboard Header */
 .dashboard-header {

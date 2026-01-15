@@ -23,21 +23,18 @@
 }
 
 .student-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    background: white;
     border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .student-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
 }
 
 .card-content {
+    padding: 1.5rem;
     color: #333;
 }
 
@@ -45,7 +42,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: #1a73e8;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     border-bottom: 2px solid #1a73e8;
     padding-bottom: 0.5rem;
 }
@@ -56,12 +53,24 @@
     gap: 0.75rem;
 }
 
+.card-meta img {
+    width: 100%; /* Reduced from 100% to 50% */
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto 1rem;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .card-meta p {
     margin: 0;
     font-size: 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: #f8f9fa;
 }
 
 .card-meta i {
@@ -71,8 +80,22 @@
 
 .card-meta p:nth-child(odd) {
     background: rgba(26, 115, 232, 0.05);
-    padding: 0.5rem;
-    border-radius: 8px;
+}
+
+.badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.text-bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.text-bg-danger {
+    background-color: #dc3545;
+    color: white;
 }
 
 /* Responsive adjustments */
@@ -88,12 +111,33 @@
     .student-card {
         padding: 1rem;
     }
+    
+    .card-meta img {
+        width: 60%; /* Slightly smaller on medium screens */
+    }
+}
 
+@media (max-width: 576px) {
+    .student-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .view-data-heading {
+        font-size: 1.8rem;
+    }
+    
     .card-title {
         font-size: 1.3rem;
     }
+    
+    .card-meta img {
+        width: 70%; /* Even smaller on small screens */
+    }
+}
 
-    .card-meta p {
-        font-size: 0.9rem;
+/* For very small screens */
+@media (max-width: 375px) {
+    .card-meta img {
+        width: 70%; /* A bit larger percentage for very small screens */
     }
 }

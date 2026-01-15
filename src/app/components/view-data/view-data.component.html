@@ -8,6 +8,9 @@
             <div class="card-content">
                 <h3 class="card-title">{{ sdata.StudentName }}</h3>
                 <div class="card-meta">
+                    <div class="student-photo">
+                        <img [src]="sdata.StudentPhoto" alt="{{ sdata.StudentName }}">
+                    </div>
                     <p><i>🆔 ID: </i>{{ sdata._id }}</p>
                     <p><i>📅 Date:</i> {{ sdata.Date | date:'mediumDate' }}</p>
                     <p><i>📖 Class:</i> {{ sdata.Class }}</p>
@@ -22,5 +25,4 @@
             </div>
         </div>
     </div>
-
 </div>

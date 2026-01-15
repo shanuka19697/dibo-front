@@ -16,7 +16,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 export class DataService {
   //http://localhost:5000/
   //https://dibo-back-production.up.railway.app/
-  private baseUrl = 'https://dibo-back-production.up.railway.app/';
+  private baseUrl = 'http://localhost:5000/';
 
   constructor(private http: HttpClient) { }
 
