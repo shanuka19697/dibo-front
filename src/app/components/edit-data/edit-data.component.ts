@@ -1,6 +1,5 @@
-// edit-data.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Studata } from '../../models/studata.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,12 +18,13 @@ export class EditDataComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     if (!confirm('Are you sure you want to edit this data?')) {
-      window.location.href = '/admin';
+      this.router.navigate(['/admin']);
       return;
     }
     this.initializeForm();
@@ -60,11 +60,10 @@ export class EditDataComponent implements OnInit {
     });
   }
 
-  // Helper function to format date to YYYY-MM-DD
   private formatDate(date: string | Date | undefined): string {
     if (!date) return '';
     const d = new Date(date);
-    if (isNaN(d.getTime())) return ''; // Handle invalid dates
+    if (isNaN(d.getTime())) return '';
     return d.toISOString().split('T')[0];
   }
 
@@ -87,7 +86,6 @@ export class EditDataComponent implements OnInit {
       this.isDataUploading = true;
       const formData = {
         ...this.addDataForm.value,
-        // Ensure dates are in correct format for backend
         Date: new Date(this.addDataForm.value.Date).toISOString(),
         AgreementEndDate: this.addDataForm.value.AgreementEndDate 
           ? new Date(this.addDataForm.value.AgreementEndDate).toISOString() 
@@ -98,6 +96,7 @@ export class EditDataComponent implements OnInit {
         next: (response) => {
           this.isDataUploading = false;
           console.log('Data updated successfully', response);
+          this.router.navigate(['/admin']);
         },
         error: (err) => {
           this.isDataUploading = false;
@@ -105,8 +104,5 @@ export class EditDataComponent implements OnInit {
         }
       });
     }
-    // Navigate to the admin panel after successful submission
-    this.isDataUploading = false;
-    window.location.href = '/admin';
   }
 }

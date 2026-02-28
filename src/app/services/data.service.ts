@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Studata } from '../models/studata.model';
 import { AddDataResponse } from '../models/add-data-response.model';
-import { AddDataComponent } from '../components/add-data/add-data.component';
 import { getDataResponse } from '../models/get-stu-response.model';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 
 
@@ -16,7 +14,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 export class DataService {
   //http://localhost:5000/
   //https://dibo-back-production.up.railway.app/
-  private baseUrl = 'https://pcc-back-end.vercel.app/';
+  private baseUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 
@@ -26,21 +24,21 @@ export class DataService {
 
   addSData(stdata: Studata): Observable<AddDataResponse> {
     return this.http.post<AddDataResponse>(
-      this.baseUrl + 'api/student-data/',
+      this.baseUrl + '/api/student-data/',
       stdata,
       this.httpOptions
     );
   }
   getSData(): Observable<getDataResponse> {
-    return this.http.get<getDataResponse>(this.baseUrl + 'api/student-data/');
+    return this.http.get<getDataResponse>(this.baseUrl + '/api/student-data');
   }
 
   deleteSData(Id: string): Observable<AddDataResponse> {
-    return this.http.delete<AddDataResponse>(`${this.baseUrl}api/student-data/${Id}`);
+    return this.http.delete<AddDataResponse>(`${this.baseUrl}/api/student-data/${Id}`);
   }
   updateSData(id: string, stdata: Studata): Observable<AddDataResponse> {
     return this.http.put<AddDataResponse>(
-      `${this.baseUrl}api/student-data/${id}`,
+      `${this.baseUrl}/api/student-data/${id}`,
       stdata,
       this.httpOptions
     );

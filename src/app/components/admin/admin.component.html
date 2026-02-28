@@ -1,92 +1,126 @@
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <h2>Welcome to the Dashboard!
-            <h4 [ngClass]="activeChange ? 'teacher-account' : 'principal-account'">
-                {{ activeChange ? 'Teacher\'s Account' : 'Principal\'s Account' }}
-            </h4>
-        </h2>
-        
-        <div class="header-buttons">
-            <button class="btn btn-secondary" (click)="logout()">Logout</button>
-            <button class="btn btn-primary" routerLink="/admin/add-data" routerLinkActive="active">Add Data</button>
-        </div>
+<div class="dashboard-container container-fluid p-0">
+  <!-- Header Section -->
+  <header class="dashboard-header glass-card mb-4">
+    <div class="header-content">
+      <div class="welcome-text">
+        <h2 class="m-0">Dashboard</h2>
+        <p class="account-badge" [ngClass]="activeChange ? 'teacher' : 'principal'">
+          {{ activeChange ? "Teacher's Account" : "Principal's Account" }}
+        </p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-add" routerLink="/admin/add-data">
+          <i class="fa fa-plus me-2"></i>Add Data
+        </button>
+        <button class="btn btn-logout-icon" (click)="logout()" title="Logout">
+          <i class="fa fa-sign-out"></i>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <div class="search-bar">
-        <input type="text" [(ngModel)]="searchIndex" placeholder="Search by Index Number" class="search-input" />
-        <button class="btn btn-primary" (click)="filterData()">Search</button>
+  <!-- Search Section -->
+  <div class="search-section glass-card mb-4">
+    <div class="search-wrapper">
+      <i class="fa fa-search search-icon"></i>
+      <input type="text" [(ngModel)]="searchIndex" placeholder="Search by Index Number..." (keyup.enter)="filterData()" />
+      <button class="btn btn-search" (click)="filterData()">Search</button>
     </div>
+  </div>
 
-    <table class="table">
-        <thead class="thead-light t-head">
-            <tr>
-                <th scope="col">Student Name</th>
-                <th scope="col">Class</th>
-                <th scope="col">Index Number</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Agreement End Date</th>
-                <th scope="col">Active</th>
-                <th scope="col">Actions</th>
-            </tr>
+  <!-- Data View Section -->
+  <div class="data-viewport glass-card">
+    <!-- Desktop Table View -->
+    <div class="table-responsive d-none d-lg-block">
+      <table class="table modern-table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Class</th>
+            <th>Index Number</th>
+            <th>Reason</th>
+            <th>Agreement End Date</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
         </thead>
         <tbody>
-            <tr
-                *ngFor="let stdata of filteredData; let i = index"
-                (click)="selectData(i, stdata)"
-                [ngClass]="rowIndex == i ? 'active' : ''"
-            >
-                <td>{{ stdata.StudentName }}</td>
-                <td>{{ stdata.Class }}</td>
-                <td>{{ stdata.sIndexNum }}</td>
-                <td>{{ stdata.Reason }}</td>
-                <td>{{ stdata.AgreementEndDate | date:'mediumDate' }}</td>
-                <td>
-                    <div class="form-check form-switch">
-                        <input 
-                            class="form-check-input"
-                            type="checkbox"
-                            id="flexSwitchCheckDefault"
-                            [checked]="stdata.Isactive"
-                            [disabled]="activeChange"
-                            (change)="toggleActive(stdata)"
-                        />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">
-                            {{ stdata.Isactive ? 'Active' : 'Inactive' }}
-                        </label>
-                    </div>
-                </td>
-                <td class="action-buttons">
-                    <a [routerLink]="['/admin/view-data', stdata._id]">
-                        <button
-                        type="button"
-                        [disabled]="rowIndex != i"
-                        class="btn-xs icon btn-view"
-                        title="View"
-                    >
-                        <i class="fa fa-eye"></i>
-                    </button>
-                    </a>
-                    <a [routerLink]="['/admin/edit-data', stdata._id]" >
-                        <button
-                        type="button"
-                        [disabled]="rowIndex != i"
-                        class="btn-xs icon btn-edit"
-                        title="Edit"
-                    >
-                        <i class="fa fa-pencil-square-o"></i>
-                    </button>
-                    </a>
-                    <button
-                        type="button"
-                        [disabled]="rowIndex != i"
-                        class="btn-xs icon btn-delete"
-                        title="Delete"
-                        (click)="deleteData(stdata._id,stdata.sIndexNum)"
-                    >
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
+          <tr *ngFor="let stdata of filteredData; let i = index" 
+              (click)="selectData(i, stdata)"
+              [class.active-row]="rowIndex == i">
+            <td class="fw-semibold">{{ stdata.StudentName }}</td>
+            <td>{{ stdata.Class }}</td>
+            <td><span class="badge-index">{{ stdata.sIndexNum }}</span></td>
+            <td class="text-truncate" style="max-width: 200px;">{{ stdata.Reason }}</td>
+            <td>{{ stdata.AgreementEndDate | date:'mediumDate' }}</td>
+            <td>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" [checked]="stdata.Isactive"
+                       [disabled]="activeChange" (change)="toggleActive(stdata)">
+                <span class="status-label" [class.inactive]="!stdata.Isactive">
+                  {{ stdata.Isactive ? 'Active' : 'Inactive' }}
+                </span>
+              </div>
+            </td>
+            <td class="text-end action-cell">
+              <div class="btn-group">
+                <a [routerLink]="['/admin/view-data', stdata._id]" class="btn-icon view" title="View">
+                  <i class="fa fa-eye"></i>
+                </a>
+                <a [routerLink]="['/admin/edit-data', stdata._id]" class="btn-icon edit" title="Edit">
+                  <i class="fa fa-pencil"></i>
+                </a>
+                <button class="btn-icon delete" (click)="deleteData(stdata._id, stdata.sIndexNum)" title="Delete">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="mobile-grid d-lg-none">
+      <div *ngFor="let stdata of filteredData; let i = index" class="mobile-card" 
+           [class.active-card]="rowIndex == i" (click)="selectData(i, stdata)">
+        <div class="card-header">
+          <div class="student-info">
+            <h5 class="m-0">{{ stdata.StudentName }}</h5>
+            <span class="text-muted small">Class {{ stdata.Class }}</span>
+          </div>
+          <span class="badge-index">{{ stdata.sIndexNum }}</span>
+        </div>
+        <div class="card-body py-3">
+          <div class="info-row">
+            <span class="label">Reason:</span>
+            <span class="value">{{ stdata.Reason }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">End Date:</span>
+            <span class="value">{{ stdata.AgreementEndDate | date:'shortDate' }}</span>
+          </div>
+          <div class="info-row mt-2">
+            <span class="label">Status:</span>
+            <div class="form-check form-switch m-0">
+              <input class="form-check-input" type="checkbox" [checked]="stdata.Isactive"
+                     [disabled]="activeChange" (change)="toggleActive(stdata)">
+              <span class="status-label small">{{ stdata.Isactive ? 'Active' : 'Inactive' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-top-dashed d-flex justify-content-end gap-3 py-2">
+            <a [routerLink]="['/admin/view-data', stdata._id]" class="btn-icon-mobile view"><i class="fa fa-eye"></i> View</a>
+            <a [routerLink]="['/admin/edit-data', stdata._id]" class="btn-icon-mobile edit"><i class="fa fa-pencil"></i> Edit</a>
+            <button class="btn-icon-mobile delete" (click)="deleteData(stdata._id, stdata.sIndexNum)"><i class="fa fa-trash"></i> Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Data State -->
+    <div *ngIf="filteredData.length === 0" class="empty-state">
+      <i class="fa fa-folder-open-o opacity-20"></i>
+      <p>No records found matching your search.</p>
+    </div>
+  </div>
 </div>

@@ -1,143 +1,207 @@
 .view-data-page {
-    padding: 2rem;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 8rem 1.5rem 4rem;
+  background: #fdfdfd;
+  min-height: 100vh;
+}
+
+.container-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .view-data-heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+  letter-spacing: -1px;
 }
 
-.student-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.btn-back {
+  background: white;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
 }
 
-.student-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+.btn-back:hover {
+  background: #f8fafc;
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
-.student-card:hover {
-    transform: translateY(-5px);
+/* Modern Profile Card */
+.profile-card-modern {
+  background: white;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
-.card-content {
-    padding: 1.5rem;
-    color: #333;
+.profile-grid {
+  display: flex;
+  flex-direction: row;
 }
 
-.card-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a73e8;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #1a73e8;
-    padding-bottom: 0.5rem;
+/* Image Section */
+.profile-image-section {
+  flex: 0 0 45%;
+  background: #f1f5f9;
+  position: relative;
 }
 
-.card-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.image-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-meta img {
-    width: 100%; /* Reduced from 100% to 50% */
-    height: auto;
-    border-radius: 10px;
-    margin: 0 auto 1rem;
-    display: block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.card-meta p {
-    margin: 0;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    background: #f8f9fa;
+.profile-card-modern:hover .image-container img {
+  transform: scale(1.05);
 }
 
-.card-meta i {
-    font-style: normal;
-    font-size: 1.2rem;
+.status-overlay {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.card-meta p:nth-child(odd) {
-    background: rgba(26, 115, 232, 0.05);
+.status-overlay.active { color: #2f855a; border: 1px solid #c6f6d5; }
+.status-overlay:not(.active) { color: #c53030; border: 1px solid #fed7d7; }
+
+/* Info Section */
+.profile-info-section {
+  flex: 1;
+  padding: 4rem;
 }
 
-.badge {
-    padding: 0.35rem 0.75rem;
-    border-radius: 30px;
-    font-weight: 500;
+.info-header {
+  margin-bottom: 3rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 1.5rem;
 }
 
-.text-bg-success {
-    background-color: #28a745;
-    color: white;
+.student-name {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
 }
 
-.text-bg-danger {
-    background-color: #dc3545;
-    color: white;
+.class-label {
+  display: inline-block;
+  background: #fff5f5;
+  color: var(--primary);
+  padding: 4px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
-/* Responsive adjustments */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.info-item label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #a0aec0;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.info-item .value {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.info-item.full-width {
+  grid-column: span 2;
+}
+
+.agreement-box {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 16px;
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-left: 4px solid var(--primary);
+}
+
+/* Loading Spinner */
+.loader-container {
+  text-align: center;
+  padding: 5rem;
+}
+
+.spinner-modern {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+  .profile-grid { flex-direction: column; }
+  .profile-image-section { flex: 0 0 auto; height: 450px; }
+  .profile-info-section { padding: 3rem; }
+}
+
 @media (max-width: 768px) {
-    .view-data-page {
-        padding: 1rem;
-    }
-
-    .view-data-heading {
-        font-size: 2rem;
-    }
-
-    .student-card {
-        padding: 1rem;
-    }
-    
-    .card-meta img {
-        width: 60%; /* Slightly smaller on medium screens */
-    }
+  .view-data-page { padding: 7rem 1rem 2rem; }
+  .profile-header { flex-direction: column; align-items: flex-start; margin-bottom: 2rem; }
+  .view-data-heading { font-size: 2rem; }
+  .profile-image-section { height: 350px; }
+  .profile-info-section { padding: 2rem; }
+  .student-name { font-size: 1.75rem; }
+  .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .info-item.full-width { grid-column: span 1; }
+  .status-overlay { top: 1.5rem; left: 1.5rem; }
 }
 
-@media (max-width: 576px) {
-    .student-cards {
-        grid-template-columns: 1fr;
-    }
-    
-    .view-data-heading {
-        font-size: 1.8rem;
-    }
-    
-    .card-title {
-        font-size: 1.3rem;
-    }
-    
-    .card-meta img {
-        width: 70%; /* Even smaller on small screens */
-    }
-}
-
-/* For very small screens */
-@media (max-width: 375px) {
-    .card-meta img {
-        width: 70%; /* A bit larger percentage for very small screens */
-    }
+@media (max-width: 480px) {
+  .profile-image-section { height: 300px; }
+  .profile-info-section { padding: 1.5rem; }
+  .info-header { margin-bottom: 2rem; }
 }

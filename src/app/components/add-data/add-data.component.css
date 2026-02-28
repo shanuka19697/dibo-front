@@ -1,125 +1,101 @@
-/* Reset default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.form-wrapper {
+  padding: 8rem 1.5rem 4rem;
+  background: #f8fafc;
+  min-height: 100vh;
 }
 
-/* General Font */
-
-/* Add Data Section */
-.add-data-section {
-  background-color: #f7fafc; /* Light gray background for contrast */
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 2rem;
-  max-width: 800px; /* Limit width for better readability */
-  width: 100%;
+.glass-form-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #edf2f7;
 }
 
 .form-title {
-  font-size: 2rem;
-  color: #333;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.modern-form .form-group {
   margin-bottom: 1.5rem;
 }
 
-/* Form Layout */
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.form-group {
-  flex: 1 1 100%;
-}
-
-@media (min-width: 768px) {
-  .form-group.col-md-6 {
-      flex: 0 0 48%;
-  }
-}
-
-.form-label {
-  font-weight: 900;
-  font-size: 1.5rem;
-  color: #4a5568;
-  margin-bottom: 0.5rem;
+.modern-form label {
   display: block;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
 }
 
-.form-control {
+.modern-form .form-control {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-control:focus {
-  border-color: #5a67d8;
-  box-shadow: 0 0 5px rgba(90, 103, 216, 0.2);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
   outline: none;
+  transition: all 0.2s;
+  background: #f8fafc;
 }
 
-/* Validation Styling */
-input.ng-invalid.ng-touched {
-  border-color: #e53e3e; /* Red for invalid */
+.modern-form .form-control:focus {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(90, 103, 216, 0.1);
 }
 
-.error {
-  color: #e53e3e;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-/* Buttons */
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
+.photo-upload-zone {
+  border: 2px dashed #cbd5e0;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  background: #f8fafc;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s;
 }
 
-.btn-primary {
-  background-color: #5a67d8; /* Blue from dashboard */
+.photo-upload-zone:hover {
+  background: #edf2f7;
+  border-color: var(--accent);
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--primary);
   color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  transition: all 0.3s;
 }
 
-.btn-primary:hover {
-  background-color: #4c51bf;
+.btn-submit:hover:not(:disabled) {
+  background: #5a1111;
   transform: translateY(-2px);
-}
-
-.btn-primary:disabled {
-  background-color: #c3cddd;
-  color: #414750;
-  cursor: not-allowed;
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-  background-color: #e53e3e; /* Red for cancel */
-  color: white;
+  width: 100%;
+  background: white;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 1rem;
 }
 
-.btn-secondary:hover {
-  background-color: #c53030;
-  transform: translateY(-2px);
-}
-
-/* Responsive Adjustments */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-  .add-data-section {
-      margin: 1rem;
-      padding: 1.5rem;
-  }
-
-  .form-group.col-md-6 {
-      flex: 1 1 100%;
-  }
+  .glass-form-card { padding: 2rem 1.5rem; }
+  .form-title { font-size: 1.75rem; }
 }

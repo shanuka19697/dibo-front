@@ -1,28 +1,81 @@
 <div class="view-data-page">
-    <!-- Heading -->
-    <h1 class="view-data-heading">Student Data</h1>
+    <div class="container-narrow">
+        <!-- Header -->
+        <div class="profile-header mb-5">
+            <h1 class="view-data-heading">Student Profile</h1>
+            <button class="btn-back" routerLink="/admin">
+                <i class="fa fa-arrow-left me-2"></i>Back to Dashboard
+            </button>
+        </div>
+        
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loader-container">
+            <div class="spinner-modern"></div>
+            <p>Gathering student records...</p>
+        </div>
 
-    <!-- Student Data Cards -->
-    <div class="student-cards">
-        <div class="student-card">
-            <div class="card-content">
-                <h3 class="card-title">{{ sdata.StudentName }}</h3>
-                <div class="card-meta">
-                    <div class="student-photo">
-                        <img [src]="sdata.StudentPhoto" alt="{{ sdata.StudentName }}">
+        <!-- Main Profile Content -->
+        <div class="profile-card-modern" *ngIf="!isLoading && sdata">
+            <div class="profile-grid">
+                <!-- Large Image Section -->
+                <div class="profile-image-section">
+                    <div class="image-container">
+                        <img [src]="sdata.StudentPhoto || 'no-photo.png'" [alt]="sdata.StudentName">
+                        <div class="status-overlay" [class.active]="sdata.Isactive">
+                            {{ sdata.Isactive ? 'Active Record' : 'Inactive Record' }}
+                        </div>
                     </div>
-                    <p><i>🆔 ID: </i>{{ sdata._id }}</p>
-                    <p><i>📅 Date:</i> {{ sdata.Date | date:'mediumDate' }}</p>
-                    <p><i>📖 Class:</i> {{ sdata.Class }}</p>
-                    <p><i>🔢 Index Number:</i> {{ sdata.sIndexNum }}</p>
-                    <p><i>📝 Reason:</i> {{ sdata.Reason }}</p>
-                    <p><i>👨‍🏫 Teacher ID:</i> {{ sdata.TeacherID }}</p>
-                    <p><i>📜 Agreement:</i> {{ sdata.Agreement }}</p>
-                    <p><i>⏰ Agreement End Date:</i> {{ sdata.AgreementEndDate | date:'mediumDate' }}</p>
-                    <p><i>👀 Observer Teacher ID:</i> {{ sdata.ObserverTeacherID }}</p>
-                    <p><i>✅</i> Active: <span *ngIf="sdata.Isactive" class="badge text-bg-success">Completed</span><span *ngIf="!sdata.Isactive" class="badge text-bg-danger">Uncompleted</span></p>
+                </div>
+
+                <!-- Details Section -->
+                <div class="profile-info-section">
+                    <div class="info-header">
+                        <h2 class="student-name">{{ sdata.StudentName }}</h2>
+                        <span class="class-label">Class {{ sdata.Class }}</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Index Number</label>
+                            <span class="value">{{ sdata.sIndexNum }}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Registry Date</label>
+                            <span class="value">{{ sdata.Date | date:'longDate' }}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Agreement End</label>
+                            <span class="value">{{ sdata.AgreementEndDate | date:'longDate' }}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Teacher ID</label>
+                            <span class="value">{{ sdata.TeacherID }}</span>
+                        </div>
+                        <div class="info-item full-width">
+                            <label>Primary Reason</label>
+                            <span class="value">{{ sdata.Reason || 'No reason provided' }}</span>
+                        </div>
+                        <div class="info-item full-width">
+                            <label>Agreement Status</label>
+                            <div class="agreement-box">
+                                {{ sdata.Agreement || 'No specific agreement details available.' }}
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <label>Observer ID</label>
+                            <span class="value">{{ sdata.ObserverTeacherID || 'N/A' }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- No Data State -->
+        <div class="no-data-card" *ngIf="!isLoading && !sdata">
+            <i class="fa fa-exclamation-circle mb-3"></i>
+            <h3>No Profile Found</h3>
+            <p>The student record you are looking for might have been moved or deleted.</p>
+            <button class="btn btn-primary mt-3" routerLink="/admin">Go to Dashboard</button>
         </div>
     </div>
 </div>
