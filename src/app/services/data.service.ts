@@ -14,7 +14,7 @@ import { getDataResponse } from '../models/get-stu-response.model';
 export class DataService {
   //http://localhost:5000/
   //https://dibo-back-production.up.railway.app/
-  private baseUrl = 'http://localhost:5000';
+  private baseUrl = 'http://34.227.242.220';
 
   constructor(private http: HttpClient) { }
 

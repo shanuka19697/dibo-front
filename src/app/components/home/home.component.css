@@ -1,237 +1,446 @@
-/* Modern Home Component Styles */
 
-.header {
-  position: relative;
-  height: 70vh;
-  width: 100%;
-  overflow: hidden;
-  background: var(--bg-dark);
+/* Premium Home Page Styles */
+
+:host {
+    display: block;
+    overflow-x: hidden;
 }
 
-.header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-  transition: transform 10s linear;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
-.header:hover img {
-  transform: scale(1.1);
+/* Glassmorphism System */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+.glass-effect {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
 }
 
-.college-name {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  width: 90%;
-  z-index: 2;
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
 }
 
-.college-name h1 {
-  font-size: 4.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  letter-spacing: -1.5px;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
 }
 
-.college-name h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  opacity: 0.9;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: slowZoom 20s infinite alternate;
 }
 
-/* Vision & Mission */
-.vision-mission {
-  display: flex;
-  gap: 3rem;
-  padding: 6rem 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: -1;
 }
 
-.vision, .mission {
-  flex: 1;
-  padding: 3rem;
-  background: white;
-  border-radius: 24px;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.3s ease;
-  border: 1px solid #edf2f7;
+.hero-card {
+    padding: 4rem;
+    text-align: center;
+    max-width: 900px;
 }
 
-.vision:hover, .mission:hover {
-  transform: translateY(-5px);
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.vision h2, .mission h2 {
-  color: var(--primary);
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  position: relative;
+.school-motto {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
-.vision h2::after, .mission h2::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 4px;
-  background: var(--secondary);
-  border-radius: 2px;
-  margin: 10px auto 0;
+.sinhala-motto {
+    font-size: 1.25rem;
+    font-style: normal;
+    display: block;
+    margin-top: 0.5rem;
 }
 
-.vision p, .mission p {
-  color: #4a5568;
-  font-size: 1.1rem;
-  line-height: 1.7;
+.hero-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
 }
 
-/* Admission Section */
-.admission-section {
-  background-attachment: fixed;
-  position: relative;
-  padding: 8rem 2rem;
-  margin: 4rem 0;
-  background-image: url('https://picsum.photos/1200/600');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
-.admission-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(121, 23, 23, 0.85);
+/* About Section */
+.about-section {
+    padding: 8rem 0;
 }
 
-.admission-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
+.sinhala-article {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    font-weight: 500;
 }
 
-.admission-content h2 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: center;
 }
 
-.download-btn {
-  display: inline-block;
-  background: var(--secondary);
-  color: var(--primary);
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: all 0.3s;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.stat-card {
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary);
 }
 
-.download-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-  background: #ffdb4d;
+.stat-card h3 {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
 }
 
-/* Updates */
-.updates-section {
-  padding: 4rem 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 0;
 }
 
-.section-title h2 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #2d3748;
-  margin-bottom: 3rem;
-  text-align: center;
+.timeline-item {
+    padding: 2.5rem;
+    width: 60%;
+    align-self: flex-start;
 }
 
-.update-card {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s;
-  border: 1px solid #f1f5f9;
+.timeline-item:nth-child(even) {
+    align-self: flex-end;
+    border-right: 4px solid var(--secondary);
+    border-left: none;
 }
 
-.update-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+.timeline-item .date {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
-.update-content { padding: 1.5rem; }
-.update-title { font-weight: 700; color: #1a202c; margin-bottom: 0.5rem; }
-.update-excerpt { color: #718096; font-size: 0.95rem; }
-
-/* Contact Section */
-.contact-section {
-  padding: 6rem 1.5rem;
-  background: #f8fafc;
+/* Facilities */
+.facilities-section { padding: 8rem 0; }
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
 }
 
-.contact-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.facility-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.contact-card {
-  background: white;
-  padding: 2.5rem 1.5rem;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: var(--shadow-md);
+.facility-card:hover { transform: translateY(-10px); }
+.facility-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
 }
 
-.icon-container {
-  width: 64px;
-  height: 64px;
-  background: #fff5f5;
-  color: var(--primary);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 1.5rem;
+/* Houses */
+.houses-section { padding: 8rem 0; }
+.houses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
 }
 
-/* Mobile Adjustments */
+.house-card {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.house-card:hover { transform: scale(1.05); }
+.vijaya { background: linear-gradient(45deg, #e53e3e, #9b2c2c); }
+.gemunu { background: linear-gradient(45deg, #d69e2e, #b7791f); }
+.thissa { background: linear-gradient(45deg, #3182ce, #2c5282); }
+.perakum { background: linear-gradient(45deg, #38a169, #276749); }
+
+/* Common UI Elements */
+.divider {
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover { border-radius: 12px; transform: scale(1.05); }
+.btn-outline:hover { background: white; color: var(--primary); }
+
+/* Animations */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.animate-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s forwards; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Principal Section */
+.principal-section {
+    position: relative;
+    padding: 10rem 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+.principal-section .overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+}
+
+.principal-card {
+    max-width: 800px;
+    padding: 5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-icon {
+    font-size: 5rem;
+    color: var(--secondary);
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    opacity: 0.3;
+}
+
+.principal-card h2 { font-size: 3rem; margin-bottom: 2rem; }
+.principal-card p { font-size: 1.25rem; line-height: 1.8; margin-bottom: 2rem; }
+
+/* Academics Grid */
+.academics-section { padding: 8rem 0; }
+.academics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.academic-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.academic-card .card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.academic-card .card-content { padding: 2rem; }
+.academic-card h3 { color: var(--primary); margin-bottom: 1rem; }
+
+/* Student Life & Societies */
+.student-life-section {
+    position: relative;
+    padding: 10rem 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.student-life-section .overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(121, 23, 23, 0.7);
+}
+
+.section-header.inverse { position: relative; z-index: 1; color: white; }
+.section-header.inverse .divider { background: white; }
+
+.societies-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.society-badge {
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* News & Updates */
+.updates-section { padding: 8rem 0; }
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.news-card {
+    padding: 2.5rem;
+    border-top: 4px solid var(--primary);
+}
+
+.news-date {
+    color: var(--primary);
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 700;
+    margin-top: 1.5rem;
+    text-decoration: none;
+}
+
+
+/* Contact Section with Glass Form */
+.contact-section { padding: 8rem 0; background: #0f172a; color: white; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+.glass-form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+input, textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    color: white;
+    border-radius: 12px;
+}
+
+.map-section { height: 450px; }
+
+/* Mobile Responsiveness - Consolidated */
 @media (max-width: 991.98px) {
-  .vision-mission { flex-direction: column; }
-  .college-name h1 { font-size: 3rem; }
-  .admission-content h2 { font-size: 2.5rem; }
+    .hero h1 { font-size: 3rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .facilities-grid, .academics-grid, .societies-grid, .news-grid { grid-template-columns: 1fr 1fr; }
+    .houses-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline-item { width: 90%; align-self: center !important; }
+    .principal-card { padding: 3rem; }
 }
 
 @media (max-width: 767.98px) {
-  .header { height: 50vh; }
-  .college-name h1 { font-size: 2.25rem; }
-  .vision, .mission { padding: 2rem; }
+    .hero-card { padding: 2rem; }
+    .hero-actions { flex-direction: column; }
+    .facilities-grid, .academics-grid, .societies-grid, .news-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+    .principal-card h2 { font-size: 2rem; }
 }
