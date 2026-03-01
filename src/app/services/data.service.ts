@@ -14,7 +14,8 @@ import { getDataResponse } from '../models/get-stu-response.model';
 export class DataService {
   //http://localhost:5000/
   //https://dibo-back-production.up.railway.app/
-  private baseUrl = 'http://34.227.242.220';
+  //http://34.227.242.220
+  private baseUrl = 'https://prevent-respondents-plots-hong.trycloudflare.com';
 
   constructor(private http: HttpClient) { }
 
